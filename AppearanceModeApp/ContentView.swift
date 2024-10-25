@@ -8,17 +8,28 @@
 import SwiftUI
 
 struct ContentView: View {
+    @EnvironmentObject var userSettings: UserSettings
+    
     var body: some View {
         VStack {
-            Image(systemName: "globe")
-                .imageScale(.large)
-                .foregroundStyle(.tint)
-            Text("Hello, world!")
+            List(UserSettings.appearanceModeType.allCases, id: \.self) { mode in
+                Button {
+                    userSettings.appearanceMode = mode
+                } label: {
+                    HStack {
+                        Text("\(mode)")
+                        Spacer()
+                        if userSettings.appearanceMode == mode {
+                            Image(systemName: "checkmark")
+                        }
+                    }
+                }
+            }
         }
-        .padding()
     }
 }
 
 #Preview {
     ContentView()
+        .environmentObject(UserSettings())
 }
