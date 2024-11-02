@@ -28,7 +28,10 @@ struct AppearanceModeAppApp: App {
                     if let windowScene = UIApplication.shared.connectedScenes.first as? UIWindowScene {
                         if let window = windowScene.windows.first {
                             // アニメーション
-                            UIView.transition(with: window, duration: 0.5, options: .transitionCrossDissolve, animations: {
+                            UIView.transition(with: window, duration: 0.5,
+                                              // アニメーション中も操作を受け付けるように.allowUserInteractionを追加
+                                              options: [.transitionCrossDissolve, .allowUserInteraction],
+                                              animations: {
                                     window.overrideUserInterfaceStyle = newValue.uIUserInterface
                                 }, completion: nil)
                         }
