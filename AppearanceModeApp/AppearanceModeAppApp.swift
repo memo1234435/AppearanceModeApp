@@ -32,8 +32,8 @@ struct AppearanceModeAppApp: App {
                                               // アニメーション中も操作を受け付けるように.allowUserInteractionを追加
                                               options: [.transitionCrossDissolve, .allowUserInteraction],
                                               animations: {
-                                    window.overrideUserInterfaceStyle = newValue.uIUserInterface
-                                }, completion: nil)
+                                window.overrideUserInterfaceStyle = newValue.uIUserInterface
+                            }, completion: nil)
                         }
                     }
                 }
